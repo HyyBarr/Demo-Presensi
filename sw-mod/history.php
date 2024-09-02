@@ -1,19 +1,19 @@
-<?php 
-if ($mod ==''){
+<?php
+if ($mod == '') {
     header('location:../404');
-    echo'kosong';
-}else{
+    echo 'kosong';
+} else {
     include_once 'sw-mod/sw-header.php';
-if(!isset($_COOKIE['COOKIES_MEMBER']) && !isset($_COOKIE['COOKIES_COOKIES'])){
+    if (!isset($_COOKIE['COOKIES_MEMBER']) && !isset($_COOKIE['COOKIES_COOKIES'])) {
         setcookie('COOKIES_MEMBER', '', 0, '/');
         setcookie('COOKIES_COOKIES', '', 0, '/');
         // Login tidak ditemukan
-        setcookie("COOKIES_MEMBER", "", time()-$expired_cookie);
-        setcookie("COOKIES_COOKIES", "", time()-$expired_cookie);
+        setcookie("COOKIES_MEMBER", "", time() - $expired_cookie);
+        setcookie("COOKIES_COOKIES", "", time() - $expired_cookie);
         session_destroy();
         header("location:./");
-}else{
-  echo'<!-- App Capsule -->
+    } else {
+        echo '<!-- App Capsule -->
     <div id="appCapsule">
     <div class="section mt-2">
     <div class="card">
@@ -36,7 +36,7 @@ if(!isset($_COOKIE['COOKIES_MEMBER']) && !isset($_COOKIE['COOKIES_COOKIES'])){
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <div class="input-group">
-                        <input type="text" name="end_date" class="form-control datepicker end_date" value="'.tanggal_ind($date).'">
+                        <input type="text" name="end_date" class="form-control datepicker end_date" value="' . tanggal_ind($date) . '">
                         <div class="input-group-addon">
                             <ion-icon name="calendar-outline"></ion-icon>
                         </div>
@@ -47,7 +47,6 @@ if(!isset($_COOKIE['COOKIES_MEMBER']) && !isset($_COOKIE['COOKIES_COOKIES'])){
         </div>
         <div class="col-sm-4 col-md-4 justify-content-between">
            <button type="button" class="btn btn-danger mt-1 btn-sortir"><ion-icon name="checkmark-outline"></ion-icon>Tampilkan</button>
-           <button type="button" class="btn btn-warning mt-1" data-toggle="modal" data-target="#modal-print"><ion-icon name="print-outline"></ion-icon> Cetak</button>
            <button type="button" class="btn btn-success mt-1 btn-clear"><ion-icon name="repeat-outline"></ion-icon> Clear</button>
         </div>
 
@@ -141,11 +140,12 @@ if(!isset($_COOKIE['COOKIES_MEMBER']) && !isset($_COOKIE['COOKIES_COOKIES'])){
                                     <div class="input-wrapper">
                                         <label class="label">Kehadiran</label>
                                         <select class="form-control custom-select" name="present_id" id="status" required>';
-                                            $query="SELECT * from present_status order by present_name ASC";
-                                              $result = $connection->query($query);
-                                              while($row = $result->fetch_assoc()) { 
-                                              echo'<option value="'.$row['present_id'].'">'.$row['present_name'].'</option>';
-                                              }echo'
+        $query = "SELECT * from present_status order by present_name ASC";
+        $result = $connection->query($query);
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="' . $row['present_id'] . '">' . $row['present_name'] . '</option>';
+        }
+        echo '
                                         </select>
                                     </div>
                                 </div>
@@ -172,6 +172,6 @@ if(!isset($_COOKIE['COOKIES_MEMBER']) && !isset($_COOKIE['COOKIES_COOKIES'])){
 
 </div>';
 
-  }
-  include_once 'sw-mod/sw-footer.php';
+    }
+    include_once 'sw-mod/sw-footer.php';
 } ?>

@@ -1,4 +1,25 @@
 <?php
+// Mulai sesi
+session_start();
+
+// Set waktu kedaluwarsa sesi (dalam detik)
+$inactive = 120; // 2 menit
+
+// Periksa apakah $_SESSION['timeout'] sudah diset
+if (isset($_SESSION['timeout'])) {
+    // Hitung selisih antara waktu saat ini dan waktu terakhir aktivitas
+    $session_life = time() - $_SESSION['timeout'];
+
+    // Jika selisih lebih besar dari waktu kedaluwarsa, hancurkan sesi dan logout
+    if ($session_life > $inactive) {
+        session_destroy();
+        header("Location: login.php"); // Ganti dengan halaman login Anda
+        exit; // Hentikan eksekusi kode selanjutnya
+    }
+}
+
+// Perbarui waktu terakhir aktivitas
+$_SESSION['timeout'] = time();
 if ($mod == '') {
     header('location:../404');
     echo 'kosong';
@@ -68,7 +89,7 @@ if ($mod == '') {
                 <div class="wallet-footer">
                     <div class="item">
                         <a href="./absent">
-                            <div class="icon-wrapper bg-danger">
+                            <div class="icon-wrapper bg-light shadow">
                                 <ion-icon name="camera-outline"></ion-icon>
                             </div>
                             <strong>Absen</strong>
@@ -77,7 +98,7 @@ if ($mod == '') {
 
                     <div class="item">
                         <a href="./izin">
-                            <div class="icon-wrapper bg-warning">
+                            <div class="icon-wrapper bg-light shadow">
                                <ion-icon name="documents-outline"></ion-icon>
                             </div>
                             <strong>Izin</strong>
@@ -86,7 +107,7 @@ if ($mod == '') {
 
                     <div class="item">
                         <a href="./cuty">
-                            <div class="icon-wrapper bg-primary">
+                            <div class="icon-wrapper bg-light shadow">
                                <ion-icon name="calendar-outline"></ion-icon>
                             </div>
                             <strong>Cuti</strong>
@@ -95,7 +116,7 @@ if ($mod == '') {
                    
                     <div class="item">
                         <a href="./history">
-                            <div class="icon-wrapper bg-success">
+                            <div class="icon-wrapper bg-light shadow">
                                <ion-icon name="document-text-outline"></ion-icon>
                             </div>
                             <strong>History</strong>
@@ -104,7 +125,7 @@ if ($mod == '') {
 
                     <div class="item">
                         <a href="./profile">
-                            <div class="icon-wrapper bg-warning">
+                            <div class="icon-wrapper bg-light shadow">
                                <ion-icon name="person-outline"></ion-icon>
                             </div>
                             <strong>Profil</strong>
@@ -125,7 +146,7 @@ if ($mod == '') {
             $row_absent = $result_absent->fetch_assoc();
             echo '
                 <div class="col-6">
-                    <div class="stat-box bg-danger">
+                    <div class="stat-box bg-success">
                         <div class="title text-white">Absen Masuk</div>
                         <div class="value text-white">' . $row_absent['time_in'] . '</div>
                     </div>
@@ -151,14 +172,14 @@ if ($mod == '') {
         } else {
             echo '
                 <div class="col-6">
-                    <a href="./absent"><div class="stat-box bg-danger">
+                    <a href="./absent"><div class="stat-box bg-success">
                         <div class="title text-white">Absen Masuk</div>
                         <div class="value text-white">Belum absen</div>
                     </div></a>
                 </div>
 
                 <div class="col-6">
-                    <div class="stat-box bg-secondary">
+                    <div class="stat-box bg-success">
                         <div class="title text-white">Absen Pulang</div>
                         <div class="value text-white">Belum Absen</div>
                     </div>
@@ -247,7 +268,7 @@ if ($mod == '') {
             <div class="section-title">1 Minggu Terakhir</div>
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table table-dark rounded bg-danger">
+                    <table class="table table-dark rounded bg-success">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal</th>

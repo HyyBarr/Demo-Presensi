@@ -21,15 +21,6 @@ ________________________________________________________________________
    Sesuaikan koneksi database kalian, jika di localhost tidak perlu menambah password dan user
    Jika kalian hosting silahkan sesuaikan dengan username, nama database, dan password hosting kalian
 
-6. Setting Konfirgurasi Google
-   Buka Folder sw-library - > lalu buka file google-config.php
-	$client_id = ''; 
-	$client_secret = '';
-
-   Silahkan sesuaikan Cliend ID dan Client Secret Google Anda bisa langsung buat melalui link di bawah ini :
-   https://console.cloud.google.com/apis/dashboard?hl=ID
-   Untuk Medapatkan Client_id silahkan buka Panduan Konfigurasi Login Dengan Google
-
 
 7. Password Admin (alamatweb/sw-admin) dihalaman url web untuk masuk ke halaman admin
 		 Username : admin
@@ -40,34 +31,4 @@ YANG SERING DITANYAKAN
 	   Silahkan ubah domain Anda menjadi https
 	b. Foto Absensi tidak tampil?
 	   Silahkan ubah halaman url di pengaturan website pada admin sesuaikan dengan urlnya.
-
-
-======== DEMO LOCALHOST ========================
-	http://localhost/absensi.v3
-------- USER
-	Email : wijaya@gmail.com
-	Pass : user12345
-	
-------- ADMIN
-	http://localhost/absensi.v3/sw-admin
-	User : admin
-	Pass : admin123
-	
-======== DEMO ONLINE ==========================
-	http://lock.timkoding.com
-------- USER
-	Email : wijaya@gmail.com
-	Pass  : user12345
-	
-------- ADMIN
-	http://lock.timkoding.com/sw-admin/
-	User : admin
-	Pass : admin123
-===============================================
-.
-.
-.
-Terimakasih.....
---
-Salam Kami,
 
